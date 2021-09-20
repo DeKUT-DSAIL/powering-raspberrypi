@@ -1,0 +1,14 @@
+#!/bin/bash
+
+python3 -m venv power-env
+
+source power-env/bin/activate
+
+sudo apt-get install llvm
+sudo apt-get install libatlas-base-dev
+pip3 install numpy
+pip3 install adafruit-blinka
+pip3 install adafruit-circuitpython-busdevice
+pip3 install adafruit-circuitpython-register
+pip3 install adafruit-circuitpython-ds3231
+pip3 install adafruit-circuitpython-mcp3xxx
