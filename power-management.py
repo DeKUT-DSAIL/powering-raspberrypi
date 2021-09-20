@@ -204,7 +204,7 @@ try:
     while True:
         try:
             current_time = datetime.now() #get the current time of the pi
-            current_hour = int(t.strftime('%H'))
+            current_hour = int(current_time.strftime('%H'))
             shutdown_hour, rtc_wake_hour, next_day_flag = alarm_hour_generator(current_hour, args.windows)
             
             
