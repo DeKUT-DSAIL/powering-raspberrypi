@@ -8,6 +8,7 @@ import digitalio
 import subprocess
 from time import sleep
 from datetime import datetime
+from ast import literal_eval as make_tuple
 
 sleep(30) #delay for 2 minute to have the pi's time set
 
@@ -33,8 +34,7 @@ try:
 
     parser.add_argument('-w',
                             '--windows',
-                            type=int,
-                            default=(5,11),
+                            default=((5,11),),
                             metavar='',
                             help='a tuple of tuples containing time intervals of active hours.')
 
@@ -201,11 +201,13 @@ try:
 
     count = 0 # Initialize count at zero
 
+    windows = make_tuple(args.windows)
+
     while True:
         try:
             current_time = datetime.now() #get the current time of the pi
             current_hour = int(current_time.strftime('%H'))
-            shutdown_hour, rtc_wake_hour, next_day_flag = alarm_hour_generator(current_hour, args.windows)
+            shutdown_hour, rtc_wake_hour, next_day_flag = alarm_hour_generator(current_hour, windows)
             
             
             if current_hour >= shutdown_hour:
