@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cd bioacoustics
+cd powering-raspberrypi
 
-source dsp-env/bin/activate
+source power-env/bin/activate
 
 python timeset.py
