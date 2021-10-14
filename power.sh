@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd bioacoustics
+cd powering-raspberrypi
 
 source dsp-env/bin/activate
 
