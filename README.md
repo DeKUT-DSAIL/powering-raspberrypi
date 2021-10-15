@@ -28,7 +28,7 @@ The [adc.py module](https://github.com/DeKUT-DSAIL/bioacoustics/blob/master/adc.
 
 The flow chart below shows the performance of the power management program:
 <p align="center">
-  <img width="460" height="300" src="/img/power.png">
+  <img width="auto" height="auto" src="/img/power.png">
   
 </p>
 
