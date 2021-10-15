@@ -33,7 +33,7 @@ The flow chart below shows the performance of the power management program:
 </p>
 
 <p align="center"> 
-  <em>Figure 1: DSAIL Power Management Board</em>
+  <em>Figure 2: Power management program flow chart</em>
 </p>
 
 ## 5. Time set program
