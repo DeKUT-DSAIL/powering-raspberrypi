@@ -39,8 +39,16 @@ The flow chart below shows the performance of the power management program:
 ## 5. Time set program
 The [time set program](https://github.com/DeKUT-DSAIL/powering-raspberrypi/blob/main/timeset.py) program is  used to set time of the Raspberry Pi every time on wake up since the Raspberry Pi lacks an onboard RTC.
 
-# Setting up the Requirements
-Clone this repository in the Raspberry Pi by running the following command onn the commandline:
+# Setting up the Raspberry Pi
+
+## Requirements
+1. Raspberry Pi 2/3/4
+2. Raspberry Pi power supply
+3. An SD Card loaded with Raspberry Pi OS
+4. Access to the internet.
+5. Ability to access the Raspberry Pi's command line.
+
+Clone this repository in the Raspberry Pi by running the following command on the commandline:
 
 ```cpp
 git clone https://github.com/DeKUT-DSAIL/powering-raspberrypi.git
