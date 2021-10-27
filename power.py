@@ -244,7 +244,7 @@ try:
                     print(voltage,'\nBattery has recovered.')
                 elif voltage <= args.depth_of_discharge:
                     message = 'Shutting down due to low battery voltage'
-                    rtc_wake_hour = args.windows[0][0]
+                    rtc_wake_hour = windows[0][0]
                     next_day_flag = True
                     rpi_shutdown(message, rtc_wake_hour, next_day_flag)
             sleep(30)
