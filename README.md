@@ -57,7 +57,7 @@ After cloning, run the following commands to create a virtual environment and in
 
 ```cpp
 cd powering-raspberrypi
-./raspi_setup.sh
+./requirements_setup.sh
 ```
 
 Next, we will need to schedule the programs to run every time on boot using `crontab`. Run the following the command:
