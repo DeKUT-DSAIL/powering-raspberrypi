@@ -72,6 +72,8 @@ cd powering-raspberrypi
 
 ** Add info **
 
+## Setting up crontab
+
 Next, we will need to schedule the programs to run every time on boot using `crontab`. Run the following the command:
 
 ```cpp
