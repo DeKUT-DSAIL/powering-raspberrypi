@@ -48,17 +48,29 @@ The [time set program](https://github.com/DeKUT-DSAIL/powering-raspberrypi/blob/
 4. Access to the internet.
 5. Ability to access the Raspberry Pi's command line.
 
+## Cloning the repository
+
 Clone this repository in the Raspberry Pi by running the following command on the commandline:
 
 ```cpp
 git clone https://github.com/DeKUT-DSAIL/powering-raspberrypi.git
 ```
+## Creating a virtual environment
+
 After cloning, run the following commands to create a virtual environment and install the requirements needed to run the programs:
 
 ```cpp
 cd powering-raspberrypi
 ./requirements_setup.sh
 ```
+
+## Setting RTC time
+
+** Add Info. **
+
+## Set system operating windows
+
+** Add info **
 
 Next, we will need to schedule the programs to run every time on boot using `crontab`. Run the following the command:
 
