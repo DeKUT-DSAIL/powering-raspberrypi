@@ -48,6 +48,9 @@ The [time set program](https://github.com/DeKUT-DSAIL/powering-raspberrypi/blob/
 4. Access to the internet.
 5. Ability to access the Raspberry Pi's command line.
 
+## Enabling interface
+SPI & 12C ...
+
 ## Cloning the repository
 
 Clone this repository in the Raspberry Pi by running the following command on the commandline:
