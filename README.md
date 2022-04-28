@@ -85,8 +85,9 @@ crontab -e
 If it is the first time using crontab, you will be prompted to choose an editor. Choose nano editor by entering 1. Copy and paste the following in the crontab:
 
 ```cpp
-@reboot /home/pi/powering-raspberrypi/timeset.sh
-@reboot /home/pi/powering-raspberrypi/power.sh
+@reboot /home/'username'/powering-raspberrypi/timeset.sh
+@reboot /home/'username'/powering-raspberrypi/power.sh
 ```
+Replace `'username'` with the set Raspberry Pi username e.g. 'pi'.
  
 The system is now ready for deployment. To monitor the voltage profile of the battery, check the csv files stored in the created battery-voltage folder. In case the system fails, check for the errors raised in the log files stored in the powering-raspberrypi folder.
