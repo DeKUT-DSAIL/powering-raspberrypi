@@ -4,13 +4,13 @@ import board
 import busio
 import logging
 import argparse
-import digitalio
 import subprocess
 from time import sleep
+from gpiozero import LED
 from datetime import datetime
 from ast import literal_eval as make_tuple
 
-sleep(90) #delay for 90 seconds to have the pi's time set
+#sleep(90) #delay for 90 seconds to have the pi's time set
 
 logging.basicConfig(filename='power.log',
                     level=logging.DEBUG,
@@ -58,11 +58,10 @@ try:
     args = parser.parse_args()
 
 
-    gate_pulse = digitalio.DigitalInOut(board.D18) #Set the GPIO PIN 18 as a digital pin
-    gate_pulse.direction = digitalio.Direction.OUTPUT #Set GPIO PIN 18 as an output pin
+    timer_latch = LED(18)       #Trigger the timer latching switch
+    latch_refresh = LED(23)     #Refresh charge in the capacitor of the  main latching switch
 
-    gate_pulse2 = digitalio.DigitalInOut(board.D23)  #set GPIO pin 23 as a digital pin
-    gate_pulse2.direction = digitalio.Direction.OUTPUT #set GPIO pin as an output pin
+
 
     def sd_card():
         """Returns a string which is the path to store the voltage reading csv
@@ -91,15 +90,15 @@ try:
     def rpi_shutdown(message, rtc_wake_hour, next_day_flag):
         print('The system will shutdown in a few.')
         rtc.alarm(rtc_wake_hour, next_day_flag)                                      #Call the al$
-        gate_pulse.value = True #Set GPIO pin 18 high to gate trigger the timer circuit thyristor
+        timer_latch.on() #Set GPIO pin 18 high to trigger the latching switch of the timer circuit
         sleep(0.5)
-        gate_pulse.value = False
+        timer_latch.off()
         logging.info(message)
-        subprocess.call(['sudo', 'shutdown' ,'now']) #Shutdown the Pi
+        #subprocess.call(['sudo', 'shutdown' ,'now']) #Shutdown the Pi
 
 
 
-    
+
 
     def alarm_hour_generator(current_hour, windows):
         """Generates the hour to set the RTC alarm
@@ -109,15 +108,15 @@ try:
                 rtc_wake_hour-time to wake the system
                 next_day_flag-a flag that is true if the wake hour is the following day
         """
-        
+
         hours = [hour for hour in range(0,24)]
-        
+
         next_day_flag = True #initialize a flag to take care of days transition as True
-        
+
         if len(windows) == 1:
             shutdown_hour = windows[0][1]
             rtc_wake_hour = windows[0][0]
-            
+
         else:
 
             active_hours = []
@@ -208,8 +207,8 @@ try:
             current_time = datetime.now() #get the current time of the pi
             current_hour = int(current_time.strftime('%H'))
             shutdown_hour, rtc_wake_hour, next_day_flag = alarm_hour_generator(current_hour, windows)
-            
-            
+
+
             if current_hour >= shutdown_hour:
                 message = 'Shutting down time'
                 rpi_shutdown(message, rtc_wake_hour, next_day_flag)
@@ -218,9 +217,9 @@ try:
             count += 1
 
             if count % 10 == 0:
-                gate_pulse2.value = True #Set GPIO pin 23 high to refresh the stored charge in power supply board capacitor
+                latch_refresh.on() #Set GPIO pin 23 high to refresh the charge stored in the main latching switch capacitor
                 sleep(0.5)
-                gate_pulse2.value = False #Set GPIO pin 23 high to low
+                latch_refresh.off() #Set GPIO pin 23 high to low
                 name_by_date = current_time.strftime('%Y-%m-%d') + '.csv'
                 current_time = current_time.strftime('%H-%M-%S')
                 try:
