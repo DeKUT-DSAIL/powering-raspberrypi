@@ -39,37 +39,53 @@ The flow chart below shows the performance of the power management program:
 ## 5. Time set program
 The [time set program](https://github.com/DeKUT-DSAIL/powering-raspberrypi/blob/main/timeset.py) program is  used to set time of the Raspberry Pi every time on wake up since the Raspberry Pi lacks an onboard RTC.
 
-# Setting up the Raspberry Pi
+## Setting up the Raspberry Pi
 
-## Requirements
+### Requirements
 1. Raspberry Pi 2/3/4
 2. Raspberry Pi power supply
-3. An SD Card loaded with Raspberry Pi OS
+3. An SD Card loaded with Raspberry Pi OS—follow the steps outlined [here](https://github.com/DeKUT-DSAIL/bioacoustics/tree/master/installing-raspberry-pi-os) to install Raspberry Pi OS.
 4. Access to the internet.
 5. Ability to access the Raspberry Pi's command line.
 
-## Enabling interface
-SPI & 12C ...
+### Step 1: Plug the Raspberry Pi onto the power board
+Plug the Raspberry Pi on the power management board as shown in Figure 3.
 
-## Cloning the repository
+-----Pi + Power board -------
 
-Clone this repository in the Raspberry Pi by running the following command on the commandline:
+### Step 2: Access the Raspberry Pi terminal
+Power the Raspberry Pi and access its terminal. Ensure the Raspberry Pi is connected to the internet.
+
+### Step 3: Clone repository
+Clone the powering Raspberry Pi in the Raspberry Pi by running the following command on the terminal:
 
 ```cpp
 git clone https://github.com/DeKUT-DSAIL/powering-raspberrypi.git
 ```
-## Creating a virtual environment
 
-After cloning, run the following commands to create a virtual environment and install the requirements needed to run the programs:
+### Step 4: Install requirements
+After cloning the repository, run the following commands to create a virtual environment and install the requirements needed to run the programmes:
 
 ```cpp
 cd powering-raspberrypi
 ./requirements_setup.sh
 ```
 
-## Setting RTC time
+### Step 5: Reset the RTC
+Reset the RTC by running the following following on the terminal.
 
-** Add Info. **
+```cpp
+python rtc_reset.py
+```
+
+### Step 6: Setting RTC time
+Let us set the RTC time by syncing it with the Raspberry time. Run the following command on the terminal.
+
+```cpp
+python timeset.py
+```
+
+### Step 7:
 
 ## Set system operating windows
 
