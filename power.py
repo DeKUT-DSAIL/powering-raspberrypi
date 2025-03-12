@@ -4,9 +4,9 @@ import board
 import busio
 import logging
 import argparse
-import subprocess
 from time import sleep
 from gpiozero import LED
+from subprocess import run
 from datetime import datetime
 from ast import literal_eval as make_tuple
 
@@ -94,6 +94,7 @@ try:
         sleep(0.5)
         timer_latch.off()
         logging.info(message)
+        run(['sudo', 'shutdown', 'now'], check=True)
         #subprocess.call(['sudo', 'shutdown' ,'now']) #Shutdown the Pi
 
 
