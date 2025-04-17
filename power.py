@@ -30,8 +30,8 @@ try:
 
     parser.add_argument('-d_d',
                             '--depth_of_discharge',
-                            type=int,
-                            default=2.8,
+                            type=float,
+                            default=3.1,
                             metavar='',
                             help='The cut off voltage.')
 
