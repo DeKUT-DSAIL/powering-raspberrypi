@@ -10,6 +10,7 @@ source power-env/bin/activate
 
 pip install --upgrade pip
 pip install gpiod
+pip install RPi.GPIO
 pip install board
 pip install smbus
 pip install wheel
