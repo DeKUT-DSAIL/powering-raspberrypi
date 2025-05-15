@@ -181,7 +181,7 @@ try:
 
                         #incase it is the last window
                         else:
-                            print('last window')
+                            #print('last window')
                             rtc_wake_hour = windows[0][0]
 
             #system wakes during inactive hours
